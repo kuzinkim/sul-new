@@ -1,0 +1,38 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+@include wrap {
+    figure {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        color: $figcaption;
+        margin-top: 36px;
+        margin-bottom: 36px;
+
+        @include md-and-down {
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        @include sm {
+            max-width: $sm-cutoff;
+        }
+
+        & + figure {
+            margin-top: 0;
+        }
+
+        &:has(+ :where(h1, h2, h3, h4)) {
+            margin-bottom: 0;
+        }
+
+        &.figure{
+            img{
+                @include sm {
+                    max-width: 225px;
+                }
+            }
+        }
+    }
+}

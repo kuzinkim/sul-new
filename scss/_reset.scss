@@ -1,0 +1,66 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+@include wrap {
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    ul,
+    ol {
+        margin: 0;
+        padding: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    ul,
+    ol {
+        list-style-type: none;
+    }
+
+    figure,
+    figcaption {
+        margin: 0;
+        padding: 0;
+    }
+
+    button,
+    input,
+    textarea {
+        font-family: inherit;
+        font-size: inherit;
+    }
+
+    picture,
+    img,
+    object {
+        user-select: none;
+    }
+
+    picture > img {
+        width: 100%;
+    }
+
+    a {
+        color: currentColor;
+        text-decoration: none;
+
+        &:visited {
+            color: currentColor;
+        }
+
+        &:active {
+            color: currentColor;
+        }
+    }
+
+    hr {
+        margin: 0;
+        padding: 0;
+        border-style: none;
+        border-width: 0;
+    }
+}

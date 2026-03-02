@@ -1,0 +1,118 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+@include wrap {
+    :where(ul, ol) {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        &.inline {
+            gap: 0;
+        }
+
+        &.spread {
+            margin-bottom: 16px;
+        }
+
+        & > li {
+            display: grid;
+            line-height: 1.5;
+            margin-bottom: 0;
+
+            &::before {
+                grid-column: 1;
+                grid-row: 1 / -1;
+                user-select: none;
+                top: 0;
+                left: 0;
+            }
+
+            & > * {
+                grid-column: 2;
+            }
+        }
+    }
+
+    ul {
+        & > li {
+            grid-template-columns: 8px auto;
+            gap: 12px;
+            padding-left: 0;
+
+            @include md {
+                gap: 14px;
+            }
+
+            @include sm {
+                gap: 8px;
+            }
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                background: $primary;
+                border-radius: 50%;
+                vertical-align: middle;
+                margin-top: 0.55em;
+
+                @include md-and-down {
+                    margin-top: 0.5em;
+                }
+            }
+
+            b, strong{
+                font-weight: 600;
+            }
+        }
+
+        &.list--no-gap {
+            gap: 0px;
+            margin-bottom: 0;
+        }
+    }
+
+    ol {
+        // margin-bottom: 36px;
+
+        counter-reset: list-index;
+        --list-counter-width: 17px;
+
+        @include md-and-down {
+            --list-counter-width: 12px;
+        }
+
+        &.start2 {
+            counter-reset: list-index 1;
+        }
+
+        &.start3 {
+            counter-reset: list-index 2;
+        }
+
+        &.start4 {
+            counter-reset: list-index 3;
+        }
+
+        & > li {
+            grid-template-columns: minmax(var(--list-counter-width), auto) minmax(0, 1fr);
+            gap: 8px;
+            counter-increment: list-index;
+
+            &::before {
+                content: counter(list-index) '.';
+                display: inline-block;
+                font-family: $font-montserrat;
+                font-weight: 600;
+                color: $primary;
+                white-space: nowrap;
+            }
+
+            b, strong{
+                font-weight: 600;
+            }
+        }
+    }
+}

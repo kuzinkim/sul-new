@@ -1,0 +1,34 @@
+$sm-width: 648; // <- 736
+$md-width: 750; // <- 1248
+
+$xxs-breakpoint: 360;
+$xs-breakpoint: 530;
+$sm-breakpoint: 768;
+$md-breakpoint: 1280;
+
+$md-overflow: 34;
+$lg-overflow: 43;
+
+$sm-cutoff: 500px;
+
+$white: #fff;
+$black: #333;
+$primary: #FF8BDF;
+$secondary: #ffaa75;
+$backdrop-light: #ffd2f5;
+$backdrop-dark: #1f1f1f;
+$figcaption: #8e959e;
+$review-backdrop: #f1f2f3;
+
+$font-montserrat: 'Montserrat', sans-serif;
+$font-open-sans: 'Open Sans', sans-serif;
+
+$font-bounded: 'Bounded', sans-serif;
+$font-kom-post: 'Kom-post', sans-serif;
+
+$text-max-width: 832px;
+
+$transition-duration: 0.25s;
+$transition-timing-function: ease-out;
+
+$wrapper-classname: 'root-wrapper';

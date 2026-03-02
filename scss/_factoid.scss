@@ -1,0 +1,53 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+@include wrap {
+
+    .factoid-wrap {
+        margin-top: 36px;
+        display: grid;
+        grid-template-columns: 296px auto;
+        grid-gap: 32px 64px;
+
+        @include md {
+            grid-gap: 28px 32px;
+            grid-template-columns: 334px auto;
+        }
+
+        @include sm {
+            margin-top: 24px;
+            grid-template-columns: 100%;
+            grid-gap: 20px 0;
+        }
+    }
+
+    factoid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 300px;
+
+        @include sm {
+            gap: 4px;
+        }
+
+        > :first-child {
+            color: $primary;
+            font-family: $font-montserrat;
+            font-size: 40px;
+            line-height: 86px;
+
+            > strong {
+                font-size: 102px;
+                line-height: 86px;
+                font-weight: 300;
+                vertical-align: middle;
+            }
+        }
+
+        > :last-child {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}

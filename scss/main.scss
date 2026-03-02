@@ -1,0 +1,179 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+@use 'reset' as *;
+@use 'typography' as *;
+
+@use 'list' as *;
+@use 'aside' as *;
+@use 'figure' as *;
+@use 'review' as *;
+@use 'factoid' as *;
+@use 'math' as *;
+
+@use 'section' as *;
+
+body{
+    margin: 0;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body,
+html {
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+}
+
+@include wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    margin-bottom: 70px;
+
+    .#{$wrapper-classname}__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+        margin: 0 var(--section-padding);
+        position: relative;
+
+        @include md {
+            gap: 56px;
+        }
+    
+        @include sm {
+            gap: 48px;
+        }
+    }
+
+    @include md-and-down {
+        gap: 56px;
+        margin-bottom: 56px;
+        overflow: hidden;
+    }
+
+    @include sm {
+        gap: 48px;
+        margin-bottom: 48px;
+    }
+
+    :is(.cutoff):not(#_) {
+        @include sm {
+            max-width: $sm-cutoff;
+        }
+    }
+
+    .show-lg-inline {
+        display: none;
+        @include lg {
+            display: inline;
+        }
+    }
+    .show-md-inline {
+        display: none;
+        @include md {
+            display: inline;
+        }
+    }
+    .show-sm-inline {
+        display: none;
+        @include sm {
+            display: inline;
+        }
+    }
+}
+
+// перебиваем стили
+@include wrap {
+    // сноски
+    @include lg {
+        #aside1 {
+            top: 382px;
+        }
+        #aside2 {
+            top: 116px;
+        }
+        #aside3 {
+            top: 170px;
+        }
+    }
+
+    // картинки
+    #pic1 {
+        max-width: 634px;
+    }
+
+    #pic5 {
+        max-width: 668px;
+    }
+
+    // в секции действия тайтл не по гайду
+    @include md {
+        .section_action .action__title {
+            min-width: 418px;
+        }
+    }
+
+    // фиксируем длину пунктов разделенного списка
+    #list-override1 {
+        @include md-and-down {
+            --list-counter-width: 16px;
+        }
+    }
+    #list-override2 {
+        @include md-and-down {
+            --list-counter-width: 16px;
+        }
+    }
+
+    // уменьшаем длину у изображения #4
+    #image4 picture {
+        max-width: 429px;
+    }
+
+    .mt-less {
+        margin-top: 36px;
+
+        @include md {
+            margin-top: 48px;
+        }
+
+        @include sm {
+        }
+    }
+
+    .hide-sm {
+        @include md-and-up {
+            display: block;
+        }
+        @include sm {
+            display: none;
+        }
+    }
+
+    .show-sm {
+        @include md-and-up {
+            display: none;
+        }
+        @include sm {
+            display: block;
+        }
+    }
+
+    section[class].mb24-md {
+        @include md {
+            margin-bottom: 24px;
+        }
+    }
+
+    .paragraph-special {
+        margin-top: 30px;
+
+        @include md-and-down {
+            margin-top: 24px;
+        }
+    }
+}
